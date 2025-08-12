@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dynamic Start Page with Logo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      text-align: center;
+    }
+    img {
+      max-width: 150px;
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+    .clock {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+      user-select: none;
+      text-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    form {
+      margin-bottom: 2rem;
+      max-width: 600px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    input[type="text"] {
+      flex-grow: 1;
+      padding: 0.75rem 1rem;
+      font-size: 1.25rem;
+      border-radius: 50px;
+      border: none;
+      outline: none;
+      transition: box-shadow 0.3s ease;
+    }
+    input[type="text"]:focus {
+      box-shadow: 0 0 10px #ffba08;
+    }
+    button {
+      background: #ffba08;
+      border: none;
+      padding: 0 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #333;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #e6a500;
+    }
+    .links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 600px;
+    }
+    .link-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+    .link-item:hover {
+      color: #ffba08;
+    }
+    .link-item svg {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0.5rem;
+      fill: currentColor;
+      filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
+    }
+    @media (max-width: 480px) {
+      .clock {
+        font-size: 2.25rem;
+      }
+      input[type="text"] {
+        font-size: 1rem;
+      }
+      button {
+        font-size: 1rem;
+      }
+      .links {
+        gap: 1rem;
+      }
+      .link-item svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="logo.png" alt="Custom Logo" />
+
+  <div class="clock" id="clock">--:--:--</div>
+
+  <form id="searchForm" action="https://www.google.com/search" method="GET" target="_blank" role="search" aria-label="Google search">
+    <input type="text" name="q" placeholder="Search Google..." autocomplete="off" required />
+    <button type="submit" aria-label="Search">ߔ</button>
+  </form>
+
+  <nav class="links" aria-label="Quick links">
+    <a href="https://mail.google.com" class="link-item" target="_blank" rel="noopener" title="Gmail">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 6.01V6h16Z"/></svg>
+      Gmail
+    </a>
+    <a href="https://news.google.com" class="link-item" target="_blank" rel="noopener" title="Google News">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Zm0 16H5V5h14v14Z"/></svg>
+      News
+    </a>
+    <a href="https://github.com" class="link-item" target="_blank" rel="noopener" title="GitHub">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-1.04-.02-1.93-2.78.6-3.37-1.34-3.37-1.34-.45-1.14-1.1-1.44-1.1-1.44-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.9.82.09-.64.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 7.8c.85 0 1.7.11 2.5.32 1.9-1.29 2.74-1.02 2.74-1.02.56 1.37.21 2.39.1 2.64.64.7 1.02 1.59 1.02 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.69.92.69 1.85 0 1.33-.01 2.4-.01 2.73 0 .26.18.57.69.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10Z"/></svg>
+      GitHub
+    </a>
+    <a href="https://stackoverflow.com" class="link-item" target="_blank" rel="noopener" title="Stack Overflow">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 20v-5.05h2v7h-14v-7h2V20h10.8Zm-10-5.1v1.9h10v-1.9H7.8Zm.3-1.88 8.62 2.12.6-2.46-8.62-2.11-.6 2.45Zm1.3-4.25 7.7 4.7 1.2-1.8-7.7-4.7-1.2 1.8Zm3.23-4.7 4.92 6.85 1.6-1.15-4.92-6.85-1.6 1.15Z"/></svg>
+      Stack Overflow
+    </a>
+  </nav>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>
